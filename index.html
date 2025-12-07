@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>帰国飯 - Homecoming Dish in Shinshu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta 
+    name="description" 
+    content="海外を旅した日本食が、信州に“帰国”した料理。外国人旅行者向けの新しいローカルフード体験「帰国飯 / Homecoming Dish」の紹介ページです。"
+  />
+  <style>
+    :root {
+      --wa-paper: #f6f0e4;
+      --wa-paper-deep: #ece1cf;
+      --wa-ink: #2b2723;
+      --wa-ink-soft: #5b5247;
+      --wa-indigo: #223955;
+      --wa-vermilion: #b34a2f;
+      --wa-gold: #c8a86a;
+      --wa-border: #d2c4ad;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.8;
+      color: var(--wa-ink);
+      background:
+        radial-gradient(circle at top, #faf4e8 0, var(--wa-paper) 40%, #eee0cb 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1, h2, h3 {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP",
+        "MS Mincho", serif;
+      letter-spacing: 0.04em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246, 240, 228, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--wa-border);
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--wa-indigo);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--wa-indigo);
+    }
+
+    .nav-links a {
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--wa-vermilion);
+    }
+
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.4rem 1.2rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin: 0 0 0.4rem;
+      color: var(--wa-indigo);
+      border-left: 4px solid var(--wa-vermilion);
+      padding-left: 0.5rem;
+    }
+
+    .section-lead {
+      font-size: 0.95rem;
+      color: var(--wa-ink-soft);
+      margin: 0.6rem 0 1.4rem;
+    }
+
+    .tagline {
+      color: var(--wa-indigo);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin: 0 0 0.8rem;
+      color: var(--wa-indigo);
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--wa-ink-soft);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(34, 57, 85, 0.06);
+      color: var(--wa-indigo);
+      font-size: 0.8rem;
+      margin-bottom: 0.6rem;
+      border: 1px solid rgba(34, 57, 85, 0.18);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 0.5rem 1.4rem;
+      border-radius: 999px;
+      cursor: pointer;
+      border-width: 1px;
+      border-style: solid;
+      background: transparent;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--wa-indigo), #38516f);
+      border-color: #1f3147;
+    }
+
+    .btn-secondary {
+      color: var(--wa-indigo);
+      border-color: var(--wa-border);
+      background: rgba(255, 252, 246, 0.92);
+    }
+
+    .btn-secondary:hover {
+      background: #f5eee1;
+    }
+
+    .hero-card {
+      background: rgba(255, 252, 246, 0.98);
+      border-radius: 1.1rem;
+      padding: 1.3rem 1.4rem;
+      border: 1px solid var(--wa-border);
+      box-shadow: 0 4px 10px rgba(105, 89, 64, 0.14);
+      font-size: 0.88rem;
+    }
+
+    .hero-card-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--wa-ink-soft);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--wa-indigo);
+    }
+
+    .hero-card-list {
+      padding-left: 1.1rem;
+      margin: 0.4rem 0 0.2rem;
+    }
+
+    .hero-card-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: rgba(255, 252, 246, 0.98);
+      border-radius: 0.9rem;
+      padding: 1.1rem 1.2rem;
+      border: 1px solid var(--wa-border);
+      box-shadow: 0 4px 10px rgba(96, 81, 59, 0.12);
+      font-size: 0.88rem;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      margin: 0 0 0.4rem;
+      color: var(--wa-indigo);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.08rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(200, 168, 106, 0.12);
+      font-size: 0.7rem;
+      margin-bottom: 0.4rem;
+      color: var(--wa-vermilion);
+      border: 1px solid rgba(200, 168, 106, 0.4);
+    }
+
+    .info-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.88rem;
+    }
+
+    .info-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .info-label {
+      font-weight: 600;
+      margin-right: 0.4rem;
+      color: var(--wa-indigo);
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: var(--wa-indigo);
+    }
+
+    .flow-section {
+      background: rgba(248, 242, 233, 0.96);
+      border-radius: 1rem;
+      padding: 1.3rem 1.2rem;
+      margin-top: 1.5rem;
+      border: 1px solid var(--wa-border);
+      position: relative;
+    }
+
+    .flow-section::before {
+      content: "";
+      position: absolute;
+      inset: 0.7rem 0.6rem auto 0.6rem;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(179, 74, 47, 0.7),
+        transparent
+      );
+    }
+
+    .flow-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: var(--wa-indigo);
+    }
+
+    .flow-diagram {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .flow-step {
+      flex: 1 1 180px;
+      background: #fdf8f0;
+      border-radius: 0.8rem;
+      padding: 0.6rem 0.7rem;
+      border: 1px solid #d7c9b6;
+      box-shadow: 0 3px 7px rgba(120, 99, 62, 0.12);
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .flow-step-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--wa-indigo);
+    }
+
+    .flow-img {
+      width: 100%;
+      border-radius: 0.6rem;
+      object-fit: cover;
+      max-height: 120px;
+    }
+
+    .flow-arrow {
+      font-size: 1.4rem;
+      color: var(--wa-vermilion);
+      flex: 0 0 auto;
+      text-align: center;
+      padding: 0 0.2rem;
+    }
+
+    .flow-caption {
+      font-size: 0.8rem;
+      color: var(--wa-ink-soft);
+    }
+
+    footer {
+      border-top: 1px solid var(--wa-border);
+      background: var(--wa-paper-deep);
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.2rem 1.1rem 1.8rem;
+      font-size: 0.8rem;
+      color: #5d5546;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+      section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .flow-diagram {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">帰国飯 - Homecoming Dish</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#howto">How to Enjoy</a>
+        <a href="#menu">Menu</a>
+        <a href="#info">Access</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="hero-badge">For International Travelers in Nagano</div>
+      <p class="tagline">帰国飯 / Homecoming Dish</p>
+      <h1 class="hero-title">海外を旅した日本食が、信州に“帰国”する日。</h1>
+      <p class="hero-sub">
+        日本へようこそ。<br />
+        「帰国飯」は、世界で姿を変えた日本食を、信州の食材で再アレンジした一皿です。<br />
+        見たことがあるのに、食べてみると知らない味。そんなちょっと不思議で、楽しいフード体験をどうぞ。
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+          帰国飯とは？
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">
+          開催場所・時間を見る
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-tag">For Travelers</div>
+      <div class="hero-card-title">こんな人にぴったりです</div>
+      <ul class="hero-card-list">
+        <li>寿司・ラーメンなどの日本食は、もう体験したことがある</li>
+        <li>その土地ならではのローカルフードを楽しみたい</li>
+        <li>食を通じて、文化のストーリーに触れてみたい</li>
+        <li>写真に撮りたくなる「ちょっと変わった料理」が好き</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">帰国飯とは？</h2>
+    <p class="section-lead">
+      一度、世界に旅だった日本食が、海外でローカライズされてから、信州の食材と文化で“帰国”する。そのストーリーごと味わっていただくフード体験です。
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="pill">Simple Explanation</div>
+        <h3>「知っているのに、知らない味」を楽しむ。</h3>
+        <p>
+          カリフォルニアロールや海外風てりやきなど、世界で少しだけ形を変えた日本食。そのイメージを入り口にしながら、信州の野菜・果物・発酵食品などを組み合わせて、「帰国した日本食」としてもう一度デザインします。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Why Shinshu?</div>
+        <h3>信州の食材だからできる、新しい一皿。</h3>
+        <p>
+          山の恵み、味噌や日本酒の発酵文化、りんごやぶどうなどのフルーツ。信州には、海外版日本食を受け止めるための豊かな食材があります。帰国飯は、その土地ならではの食材でつくられる「ここでしか食べられない日本食」です。
+        </p>
+      </div>
+    </div>
+
+    <div class="flow-section">
+      <div class="flow-title">カリフォルニアロールで見る「帰国飯」の流れ</div>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-step-title">1. 日本の巻き寿司</div>
+          <img src="img_maki_originaru.jpg" alt="日本の巻き寿司" class="flow-img" />
+          <div>
+            シンプルな巻き寿司がスタート。日本で生まれた原型です。
+          </div>
+        </div>
+
+        <div class="flow-arrow">➜</div>
+
+        <div class="flow-step">
+          <div class="flow-step-title">2. アメリカでローカライズ</div>
+          <img src="img_maki_kariforunia.jpg" alt="カリフォルニアロール" class="flow-img" />
+          <div>
+            海苔を内側に巻き、アボカドやカニカマを使った
+            「カリフォルニアロール」に姿を変えます。
+          </div>
+        </div>
+
+        <div class="flow-arrow">➜</div>
+
+        <div class="flow-step">
+          <div class="flow-step-title">3. 信州の食材で“帰国”する</div>
+          <img src="img_maki_shinshuraize.jpg" alt="信州ライズ・ロール寿司" class="flow-img" />
+          <div>
+            信州サーモン、りんご、地元野菜、味噌などで再アレンジ。<br>
+            海外で変化した日本食が、信州の素材と文化で
+            “帰国した姿”に生まれ変わります。<br><br>
+            これが <strong>帰国飯（Homecoming Dish）</strong> です。
+          </div>
+        </div>
+      </div>
+      <div class="flow-caption">
+        日本で生まれ、アメリカで変化し、信州で帰ってくる——  
+        このストーリー全体を味わうのが「帰国飯」です。
+      </div>
+    </div>
+  </section>
+
+  <section id="howto">
+    <h2 class="section-title">どうやって楽しむの？</h2>
+    <p class="section-lead">
+      帰国飯は、むずかしい体験ではありません。レストランで、ふつうの食事として、でも少しだけ特別なストーリーと一緒に楽しんでください。
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="pill">Step 1</div>
+        <h3>メニューから「帰国飯」を選ぶ</h3>
+        <p>
+          レストランのメニューに「帰国飯 / Homecoming Dish」と書かれたコーナーがあります。料理名の下に、「どの国でローカライズされた日本食なのか」「どんな信州食材を使っているのか」が短く書かれています。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Step 2</div>
+        <h3>ギャップを楽しみながら味わう</h3>
+        <p>
+          見た目は、あなたが知っている日本食に近いかもしれません。でも、一口食べると「そう来たか！」という違いがあります。見た目と味のギャップ、海外と信州のギャップを、ぜひ楽しんでください。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Step 3</div>
+        <h3>ストーリーごと、シェアする</h3>
+        <p>
+          写真を撮ったり、どこの国でどんなふうに変化した日本食なのかを、友だちと話しながらシェアしてください。ハッシュタグの例：<br />#帰国飯 #HomecomingDish #Shinshu
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Good to Know</div>
+        <h3>日本語が話せなくても大丈夫</h3>
+        <p>
+          スタッフは、簡単な英語でメニューの説明ができるように準備します。また、料理の説明は、日英併記のメニューカードでご覧いただけます。（※詳細はお店ごとに異なります）
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <h2 class="section-title">メニューのイメージ</h2>
+    <p class="section-lead">
+      ここに書かれたメニューはあくまでイメージです。実際の内容は、お店や季節によって変わります。
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="pill">Sample 1</div>
+        <h3>信州カリフォルニアロール</h3>
+        <p>
+          カリフォルニアロールをイメージした、信州バージョンの巻き寿司。<br />
+          信州サーモン、りんご、季節の野菜を組み合わせたカラフルな一皿です。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Sample 2</div>
+        <h3>信州てりやきボウル</h3>
+        <p>
+          海外の「てりやきボウル」をイメージしつつ、信州味噌を使った特製ソースで仕上げた丼ぶり。ごはんの上には、地元野菜のグリルとジューシーなお肉がのります。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Sample 3</div>
+        <h3>信州ポキ・プレート</h3>
+        <p>
+          ハワイのポキボウルを参考に、信州サーモンと野菜、味噌ベースのドレッシングでつくるプレート。ヘルシーで軽いランチとしておすすめです。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="pill">Note</div>
+        <p>
+          実際のメニューは、連携するレストランのシェフと一緒に開発されます。食物アレルギーなどがある方は、ご注文前にスタッフへお知らせください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="info">
+    <h2 class="section-title">開催場所・アクセス</h2>
+    <p class="section-lead">
+      実際の店舗情報に合わせて、以下の文章を書き換えてください。
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>基本情報</h3>
+        <ul class="info-list">
+          <li><span class="info-label">店舗名：</span>〇〇ビュッフェレストラン（仮）</li>
+          <li><span class="info-label">住所：</span>長野県〇〇市〇〇町 〇-〇-〇</li>
+          <li><span class="info-label">アクセス：</span>〇〇駅から徒歩〇分</li>
+          <li><span class="info-label">開催期間：</span>202X年X月X日〜X月X日</li>
+          <li><span class="info-label">提供時間：</span>ランチ / ディナーの一部メニューとして提供</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>予約・お問い合わせ</h3>
+        <p style="font-size: 0.88rem;">
+          ・予約方法：<br />
+          電話、公式サイト、ホテルフロントなど、実際の運用にあわせて記入してください。<br /><br />
+          ・想定予算：<br />
+          ランチ：〇〇円〜 / ディナー：〇〇円〜<br /><br />
+          ・使用言語：<br />
+          日本語、簡単な英語での対応を予定しています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2 class="section-title">よくある質問</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. 英語メニューはありますか？</div>
+      <div>A. はい、帰国飯メニューには英語表記（または日英併記）をご用意する予定です。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. ベジタリアン対応はできますか？</div>
+      <div>A. 一部のメニューで対応可能な場合があります。店舗によって異なるため、スタッフにおたずねください。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. 子ども連れでも大丈夫ですか？</div>
+      <div>A. はい、ファミリーでもお楽しみいただけるメニューを想定しています。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. 日本語が話せなくても大丈夫ですか？</div>
+      <div>A. 簡単な英語での対応と、メニューの英語表記を準備しますので、ご安心ください。</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 帰国飯 / Homecoming Dish Project</div>
+      <div>Concept &amp; Draft Website by 24f2009j-star + ChatGPT</div>
+    </div>
+  </footer>
+</body>
+</html>
